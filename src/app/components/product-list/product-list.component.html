@@ -6,10 +6,41 @@
   </div>
 
   <div *ngIf="products.length > 0" class="products-list">
-    <div *ngFor="let product of products" class="product-item">
-      <h3>{{ product.name }}</h3>
-      <p class="price">{{ product.price | currency: 'EUR' }}</p>
-      <p class="description">{{ product.description }}</p>
+    <div
+      *ngFor="let product of products; let i = index"
+      class="product-item"
+      [class.selected]="isSelected(product)"
+      (click)="selectProduct(product)"
+    >
+      <div class="product-header">
+        <h3>{{ product.name }}</h3>
+        <span class="product-price">{{ product.price | currency: 'EUR' }}</span>
+      </div>
+
+      <div class="product-body">
+        <p class="product-description">{{ product.description }}</p>
+      </div>
+
+      <div class="product-footer">
+        <button
+          class="btn-delete"
+          (click)="deleteProduct(i); $event.stopPropagation()"
+          title="Elimina prodotto"
+        >
+          🗑️ Elimina
+        </button>
+      </div>
+
+      <div *ngIf="isSelected(product)" class="selected-indicator">
+        ✓ Selezionato
+      </div>
     </div>
+  </div>
+
+  <div *ngIf="selectedProduct" class="selected-product-info">
+    <h3>Prodotto Selezionato</h3>
+    <p><strong>Nome:</strong> {{ selectedProduct.name }}</p>
+    <p><strong>Prezzo:</strong> {{ selectedProduct.price | currency: 'EUR' }}</p>
+    <p><strong>Descrizione:</strong> {{ selectedProduct.description }}</p>
   </div>
 </div>

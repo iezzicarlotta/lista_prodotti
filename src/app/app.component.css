@@ -22,3 +22,20 @@
   flex: 1;
   padding: 20px;
 }
+
+.app-footer {
+  background-color: #333;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.app-footer p {
+  margin: 0;
+}
+
+.app-main {
+  flex: 1;
+  padding: 20px;
+}

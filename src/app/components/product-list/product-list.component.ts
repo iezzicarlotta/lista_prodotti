@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../models/product';
 
 @Component({
@@ -8,6 +8,10 @@ import { Product } from '../../models/product';
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
+  selectedProduct: Product | null = null;
+
+  @Output() productSelected = new EventEmitter<Product>();
+  @Output() productDeleted = new EventEmitter<Product>();
 
   constructor() {}
 
@@ -51,5 +55,40 @@ export class ProductListComponent implements OnInit {
         description: 'Tastiera meccanica RGB per gaming e produttività'
       }
     ];
+  }
+
+  /**
+   * Seleziona un prodotto e emette l'evento al parent
+   * @param product - Il prodotto da selezionare
+   */
+  selectProduct(product: Product): void {
+    this.selectedProduct = product;
+    this.productSelected.emit(product);
+  }
+
+  /**
+   * Elimina un prodotto dall'array e emette l'evento al parent
+   * @param index - Indice del prodotto da eliminare
+   */
+  deleteProduct(index: number): void {
+    if (index >= 0 && index < this.products.length) {
+      const deletedProduct = this.products[index];
+      this.products.splice(index, 1);
+      this.productDeleted.emit(deletedProduct);
+
+      // Se il prodotto eliminato era selezionato, deseleziona
+      if (this.selectedProduct === deletedProduct) {
+        this.selectedProduct = null;
+      }
+    }
+  }
+
+  /**
+   * Verifica se un prodotto è attualmente selezionato
+   * @param product - Il prodotto da verificare
+   * @returns true se il prodotto è selezionato
+   */
+  isSelected(product: Product): boolean {
+    return this.selectedProduct === product;
   }
 }
