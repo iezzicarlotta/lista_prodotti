@@ -1,1 +1,11 @@
-<p>product-detail-component works!</p>
+<h2>Dettaglio prodotto</h2>
+
+<section *ngIf="product; else noSelection">
+	<p><strong>Nome:</strong> {{ product.name }}</p>
+	<p><strong>Prezzo:</strong> {{ product.price }} EUR</p>
+	<p><strong>Descrizione:</strong> {{ product.description }}</p>
+</section>
+
+<ng-template #noSelection>
+	<p>Nessun prodotto selezionato</p>
+</ng-template>

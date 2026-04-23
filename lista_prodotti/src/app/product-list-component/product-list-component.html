@@ -1,1 +1,9 @@
-<p>product-list-component works!</p>
+<h2>Lista prodotti</h2>
+
+<ul>
+	<li *ngFor="let product of products" (click)="selectProduct(product)">
+		{{ product.name }} - {{ product.price }} EUR
+	</li>
+</ul>
+
+<app-product-detail-component [product]="selectedProduct"></app-product-detail-component>
