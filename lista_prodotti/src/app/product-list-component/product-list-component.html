@@ -1,9 +1,61 @@
-<h2>Lista prodotti</h2>
+<div class="products-layout">
+	<section class="card">
+		<h2>Lista prodotti</h2>
 
-<ul>
-	<li *ngFor="let product of products" (click)="selectProduct(product)">
-		{{ product.name }} - {{ product.price }} EUR
-	</li>
-</ul>
+		<form class="product-form" #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+			<div class="form-field">
+				<label for="name">Nome</label>
+				<input
+					id="name"
+					type="text"
+					name="name"
+					required
+					[(ngModel)]="newProduct.name"
+				/>
+			</div>
 
-<app-product-detail-component [product]="selectedProduct"></app-product-detail-component>
+			<div class="form-field">
+				<label for="price">Prezzo</label>
+				<input
+					id="price"
+					type="number"
+					name="price"
+					required
+					min="0"
+					step="0.01"
+					[(ngModel)]="newProduct.price"
+				/>
+			</div>
+
+			<div class="form-field">
+				<label for="description">Descrizione</label>
+				<textarea
+					id="description"
+					name="description"
+					required
+					[(ngModel)]="newProduct.description"
+				></textarea>
+			</div>
+
+			<button type="submit" [disabled]="productForm.invalid">Aggiungi prodotto</button>
+		</form>
+
+		<ul class="product-list">
+			<li
+				*ngFor="let product of products"
+				(click)="selectProduct(product)"
+				[class.selected]="selectedProduct === product"
+			>
+				<div class="product-main">
+					<span class="product-name">{{ product.name }}</span>
+					<span class="product-price">{{ product.price }} EUR</span>
+				</div>
+				<button type="button" (click)="removeProduct(product, $event)">Elimina</button>
+			</li>
+		</ul>
+	</section>
+
+	<section class="card detail-card">
+		<app-product-detail-component [product]="selectedProduct"></app-product-detail-component>
+	</section>
+</div>

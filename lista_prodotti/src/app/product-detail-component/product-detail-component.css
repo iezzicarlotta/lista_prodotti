@@ -1,0 +1,26 @@
+h2 {
+	margin: 0 0 0.9rem;
+	color: #1d2a38;
+}
+
+.detail-box {
+	border: 1px solid #d7e0ea;
+	border-radius: 10px;
+	background: #f8fbff;
+	padding: 0.85rem;
+}
+
+.detail-box p {
+	margin: 0.45rem 0;
+	color: #2c3f53;
+}
+
+.no-selection {
+	margin: 0;
+	padding: 0.8rem;
+	border-radius: 8px;
+	border: 1px dashed #c18f13;
+	background: #fff7dc;
+	color: #785d0d;
+	font-weight: 600;
+}

@@ -1,0 +1,125 @@
+.products-layout {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 1rem;
+	max-width: 980px;
+	margin: 1.5rem auto;
+	padding: 0 1rem 1rem;
+}
+
+.card {
+	background: #ffffff;
+	border: 1px solid #dce3ea;
+	border-radius: 12px;
+	padding: 1rem;
+	box-shadow: 0 8px 18px rgba(20, 32, 46, 0.06);
+}
+
+h2 {
+	margin: 0 0 0.9rem;
+	color: #1d2a38;
+}
+
+.product-form {
+	display: grid;
+	gap: 0.75rem;
+	margin-bottom: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid #e8edf2;
+}
+
+.form-field {
+	display: grid;
+	gap: 0.35rem;
+}
+
+label {
+	font-weight: 600;
+	color: #33475b;
+}
+
+input,
+textarea {
+	width: 100%;
+	border: 1px solid #c8d3de;
+	border-radius: 8px;
+	padding: 0.55rem 0.65rem;
+	font: inherit;
+	color: #1d2a38;
+	background: #fcfdff;
+}
+
+textarea {
+	min-height: 84px;
+	resize: vertical;
+}
+
+button {
+	border: none;
+	border-radius: 8px;
+	padding: 0.5rem 0.75rem;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.product-form > button {
+	justify-self: start;
+	background: #0c7a5d;
+	color: #ffffff;
+}
+
+.product-form > button:disabled {
+	background: #9eb6ad;
+	cursor: not-allowed;
+}
+
+.product-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 0.65rem;
+}
+
+.product-list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.7rem 0.8rem;
+	border: 1px solid #d5dee7;
+	border-radius: 10px;
+	background: #f8fbff;
+	cursor: pointer;
+}
+
+.product-list li.selected {
+	border-color: #0c7a5d;
+	background: #eaf8f3;
+}
+
+.product-main {
+	display: grid;
+	gap: 0.2rem;
+}
+
+.product-name {
+	font-weight: 700;
+	color: #1d2a38;
+}
+
+.product-price {
+	font-size: 0.95rem;
+	color: #4d6378;
+}
+
+.product-list li button {
+	background: #d64545;
+	color: #ffffff;
+}
+
+@media (max-width: 860px) {
+	.products-layout {
+		grid-template-columns: 1fr;
+	}
+}
