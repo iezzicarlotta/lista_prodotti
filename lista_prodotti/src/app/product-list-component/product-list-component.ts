@@ -8,7 +8,7 @@ import { ProductDetailComponent } from '../product-detail-component/product-deta
   selector: 'app-product-list-component',
   imports: [CommonModule, FormsModule, ProductDetailComponent],
   templateUrl: './product-list-component.html',
-  styleUrl: './product-list-component.css',
+  styleUrls: ['./product-list-component.css'],
 })
 export class ProductListComponent {
   products: Product[] = [

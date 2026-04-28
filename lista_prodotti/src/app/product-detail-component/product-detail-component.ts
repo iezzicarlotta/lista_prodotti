@@ -6,7 +6,7 @@ import { Product } from '../product';
   selector: 'app-product-detail-component',
   imports: [CommonModule],
   templateUrl: './product-detail-component.html',
-  styleUrl: './product-detail-component.css',
+  styleUrls: ['./product-detail-component.css'],
 })
 export class ProductDetailComponent {
   @Input() product: Product | null = null;
