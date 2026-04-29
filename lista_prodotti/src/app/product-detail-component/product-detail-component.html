@@ -1,11 +1,22 @@
-<h2>Dettaglio prodotto</h2>
+<h2>Dettaglio prodotto</h2> <!-- Titolo della sezione dettaglio -->
 
-<section class="detail-box" *ngIf="product; else noSelection">
-	<p><strong>Nome:</strong> {{ product.name }}</p>
-	<p><strong>Prezzo:</strong> {{ product.price }} EUR</p>
-	<p><strong>Descrizione:</strong> {{ product.description }}</p>
+<section 
+	class="detail-box" 
+	*ngIf="product; else noSelection" 
+><!-- Mostra questa sezione solo se esiste un prodotto, altrimenti mostra il template noSelection -->
+	<p>
+		<strong>Nome:</strong> {{ product.name }} <!-- Mostra il nome del prodotto -->
+	</p>
+
+	<p>
+		<strong>Prezzo:</strong> {{ product.price }} EUR <!-- Mostra il prezzo con valuta -->
+	</p>
+
+	<p>
+		<strong>Descrizione:</strong> {{ product.description }} <!-- Mostra la descrizione -->
+	</p>
 </section>
 
-<ng-template #noSelection>
-	<p class="no-selection">Nessun prodotto selezionato</p>
+<ng-template #noSelection> <!-- Template alternativo se nessun prodotto è selezionato -->
+	<p class="no-selection">Nessun prodotto selezionato</p> <!-- Messaggio mostrato quando product è null -->
 </ng-template>

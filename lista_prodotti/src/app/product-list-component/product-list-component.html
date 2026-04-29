@@ -2,21 +2,21 @@
 	<section class="card">
 		<h2>Lista prodotti</h2>
 
-		<form class="product-form" #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+		<form class="product-form" #productForm="ngForm" (ngSubmit)="addProduct(productForm)"> <!-- Form per aggiungere un nuovo prodotto -->
 			<div class="form-field">
-				<label for="name">Nome</label>
+				<label for="name">Nome</label> <!-- Campo per il nome del prodotto -->
 				<input
 					id="name"
 					type="text"
-					name="name"
+					name="name" 
 					required
 					[(ngModel)]="newProduct.name"
-				/>
+				/> <!-- Two-way data binding per il nome del prodotto -->
 			</div>
 
 			<div class="form-field">
 				<label for="price">Prezzo</label>
-				<input
+				<input 
 					id="price"
 					type="number"
 					name="price"
@@ -24,7 +24,7 @@
 					min="0"
 					step="0.01"
 					[(ngModel)]="newProduct.price"
-				/>
+				/> <!-- Two-way data binding per il prezzo del prodotto -->
 			</div>
 
 			<div class="form-field">
@@ -34,24 +34,24 @@
 					name="description"
 					required
 					[(ngModel)]="newProduct.description"
-				></textarea>
+				></textarea> <!-- Two-way data binding per la descrizione del prodotto -->
 			</div>
 
 			<button type="submit" [disabled]="productForm.invalid">Aggiungi prodotto</button>
 		</form>
 
-		<ul class="product-list">
+		<ul class="product-list"> <!-- Lista dei prodotti -->
 			<li
 				*ngFor="let product of products"
 				(click)="selectProduct(product)"
 				[class.selected]="selectedProduct === product"
-			>
+			> <!-- Ciclo per visualizzare ogni prodotto e gestire la selezione -->
 				<div class="product-main">
 					<span class="product-name">{{ product.name }}</span>
 					<span class="product-price">{{ product.price }} EUR</span>
 				</div>
 				<button type="button" (click)="removeProduct(product, $event)">Elimina</button>
-			</li>
+			</li> <!-- Pulsante per eliminare un prodotto, con gestione dell'evento per evitare la propagazione del click alla selezione del prodotto -->
 		</ul>
 	</section>
 
